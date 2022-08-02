@@ -1,7 +1,8 @@
 <template>
   <q-page>
-    <h5 class="q-ml-md"> CAMPOS </h5>
-    <div class="q-pa-md row items-start q-gutter-md">
+    <botao-voltar v-bind:link="'/#'"/>
+    <h5 class="q-ml-md text-center"> 
+      <p>CAMPOS</p> 
       <q-btn 
         unelevated 
         rounded 
@@ -9,14 +10,16 @@
         label="Adicionar campo" 
         @click="$router.push('/campos/adicionar')"
       />
+    </h5>
+    <div class="q-pa-md row items-start">
       <q-card 
-        class="my-card q-mt-md q-pa-sm" 
+        class="my-card q-mt-md q-pa-sm col-12" 
         v-for="(campo, index) in campos" 
         :key="index"
       >
         <q-card-section>
           <div class="row items-center no-wrap">
-            <div class="col">
+            <div class="col-12">
               <div class="text-h6">
                 <div class="row">
                   <div class="col"> {{ campo.nome }}</div>
@@ -54,29 +57,37 @@
 </template>
 
 <script>
-import api from '../services/api'
+import api from '../../services/api'
+import BotaoVoltar from 'components/BotaoVoltar.vue'
 export default {
   name: 'PageCampos',
+  components: {
+    BotaoVoltar
+  },
   data () {
     return {
       campos: []
     }
   },
   async mounted(){
-    try {
-        const { data } = await api.get(`/campos`)
-        this.campos = data
-    } catch (e) {
-      console.log(e)
-      alert('Ocorreu um erro ao carregar as instituições.')
-    }
+    await this.loadCampos();
   },
   methods: {
+    async loadCampos() {
+      try {
+          const { data } = await api.get(`/campos`)
+          this.campos = data
+      } catch (e) {
+        console.log(e)
+        alert('Ocorreu um erro ao carregar os campos.')
+      }
+    },
     async handleSubmitRemove(campo_id) {
       try {
         await api.delete(`/campos/${campo_id}`);
         alert("Campo removido com sucesso");
-        this.$router.push("/campos");
+        
+        await this.loadCampos();
       } catch (e) {
         alert("Ocorreu um erro ao remover o campo");
       }

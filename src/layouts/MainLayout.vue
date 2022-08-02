@@ -52,13 +52,13 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksData = [
   {
     title: 'Campos',
-    caption: 'quasar.dev',
+    caption: 'campos',
     icon: 'landscape',
     link: '/#/campos'
   },
   {
     title: 'Animais',
-    caption: 'github.com/quasarframework',
+    caption: 'animais',
     icon: 'sell',
     link: '/#/animais'
   }

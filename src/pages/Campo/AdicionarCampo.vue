@@ -1,7 +1,8 @@
 <template>
   <q-page>
-    <h5 class="q-ml-md"> ADICIONAR CAMPO </h5>
-    <div class="q-pa-md row items-start q-gutter-md">
+    <botao-voltar v-bind:link="'/#/campos'"/>
+    <h5 class="q-ml-md text-center"> ADICIONAR CAMPO </h5>
+    <div class="q-pa-md row items-start q-gutter-md flex-center">
       <q-card class="my-card q-mt-md q-pa-sm">
         <q-card-section>
           <div class="column items-center no-wrap">
@@ -11,6 +12,8 @@
                 v-model="campo.nome" 
                 label="Nome" 
                 aria-placeholder="Digite o nome"
+                aria-required="true"
+                :rules="[val => !!val || 'Preencha este campo']"
               />
             </div>
             <div class="col-6 q-mt-md q-pa-sm">
@@ -19,6 +22,7 @@
                 v-model="campo.tipo" 
                 label="Tipo" 
                 aria-placeholder="Digite o tipo"
+                aria-required="true"
               />
             </div>
             <div class="col-12 q-mt-md q-pa-sm">
@@ -27,6 +31,7 @@
                 v-model="campo.condicao" 
                 label="Condição" 
                 aria-placeholder="Informe a condição"
+                aria-required="true"
               />
             </div>
             <div class="col-12 q-mt-md q-pa-sm">
@@ -46,9 +51,13 @@
 </template>
 
 <script>
-import api from '../services/api'
+import api from '../../services/api'
+import BotaoVoltar from 'components/BotaoVoltar.vue'
 export default {
   name: 'PageAdicionarCampo',
+  components: {
+    BotaoVoltar
+  },
   data () {
     return {
       campo: {

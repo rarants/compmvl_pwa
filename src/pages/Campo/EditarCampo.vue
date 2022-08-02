@@ -1,7 +1,8 @@
 <template>
   <q-page>
-    <h5 class="q-ml-md"> EDITAR CAMPO </h5>
-    <div class="q-pa-md row items-start q-gutter-md">
+    <botao-voltar v-bind:link="'/#/campos'"/>
+    <h5 class="q-ml-md text-center"> EDITAR CAMPO </h5>
+    <div class="q-pa-md row items-start q-gutter-md flex-center">
       <q-card class="my-card q-mt-md q-pa-sm">
         <q-card-section>
           <div class="column items-center no-wrap">
@@ -11,6 +12,7 @@
                 v-model="campo.nome" 
                 label="Nome" 
                 aria-placeholder="Digite o nome"
+                :rules="[val => !!val || 'Preencha este campo']"
               />
             </div>
             <div class="col-6 q-mt-md q-pa-sm">
@@ -53,9 +55,13 @@
 </template>
 
 <script>
-import api from '../services/api'
+import api from '../../services/api'
+import BotaoVoltar from 'components/BotaoVoltar.vue'
 export default {
   name: 'PageEditarCampo',
+  components: {
+    BotaoVoltar
+  },
   data () {
     return {
       campo: {
@@ -69,7 +75,6 @@ export default {
     try {
         const { data } = await api.get(`/campos/${this.$route.params.id}`)
         this.campo = Object.assign({}, data);
-        console.log(data);
     } catch (e) {
       console.log(e)
       alert('Ocorreu um erro ao carregar o campo.')
