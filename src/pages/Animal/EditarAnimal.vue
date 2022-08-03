@@ -25,7 +25,7 @@
                   type="number"
                 />
               </div>
-              <div class="col-12 q-mt-md q-pa-sm">
+              <div class="col-12 q-mt-md q-pa-sm" v-if="lotes">
                 <q-select
                   outlined
                   v-model="animal.lote_id"
@@ -45,9 +45,9 @@
                             <div class="col">Lote selecionado</div>
                           </div>
                         </div>
-                        <div class="text-subtitle2">Id:{{ lote.id }}</div>
-                        <div class="text-subtitle2">Quantidade:{{ lote.quantidade }}</div>
-                        <div class="text-subtitle2">Descrição:{{ lote.descricao }}</div>
+                        <div class="text-subtitle2">Id: {{ lote.id }}</div>
+                        <div class="text-subtitle2">Quantidade: {{ lote.quantidade || "--" }}</div>
+                        <div class="text-subtitle2">Descrição: {{ lote.descricao || "--" }}</div>
                       </div>
                     </div>
                   </q-card-section>

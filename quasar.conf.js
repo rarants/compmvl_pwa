@@ -116,8 +116,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
+        name: `FieldManager`,
+        short_name: `FieldManager`,
         description: `A Project to manage fields and animals`,
         display: 'standalone',
         orientation: 'portrait',

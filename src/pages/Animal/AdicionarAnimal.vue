@@ -26,7 +26,7 @@
                 type="number"
               />
             </div>
-            <div class="col-12 q-mt-md q-pa-sm">
+            <div class="col-12 q-mt-md q-pa-sm" v-if="lotes">
               <q-select
                 outlined
                 v-model="animal.lote_id"
