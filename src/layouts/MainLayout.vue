@@ -67,6 +67,12 @@ const linksData = [
     caption: 'lotes',
     icon: 'landscape',
     link: '/#/lotes'
+  },
+  {
+    title: 'Historicos',
+    caption: 'historicos',
+    icon: 'calendar',
+    link: '/#/historicos'
   }
 ]
 
