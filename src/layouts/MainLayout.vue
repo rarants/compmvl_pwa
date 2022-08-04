@@ -61,6 +61,18 @@ const linksData = [
     caption: 'animais',
     icon: 'sell',
     link: '/#/animais'
+  },
+  {
+    title: 'Lotes',
+    caption: 'lotes',
+    icon: 'landscape',
+    link: '/#/lotes'
+  },
+  {
+    title: 'Historicos',
+    caption: 'historicos',
+    icon: 'calendar',
+    link: '/#/historicos'
   }
 ]
 
